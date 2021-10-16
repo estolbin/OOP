@@ -18,10 +18,14 @@ public:
 	}
 	void set_x(double x) 
 	{
+		if (x < 0)x = 0;
+		if (x > 1000)x = 1000;
 		this->x = x;
 	}
 	void set_y(double y)
 	{
+		if (y < 0)y = 0;
+		if (y > 1000)y = 1000;
 		this->y = y;
 	}
 
@@ -48,6 +52,15 @@ public:
 		cout << "Destructor:\t\t" << this << endl;
 	}
 
+	// Operators
+	Point& operator=(const Point& other)
+	{
+		this->x = other.x;
+		this->y = other.y;
+		cout << "CopyAssignment:\t\t" << this << endl;
+		return *this;
+	}
+
 
 	// Methods
 	double distance_to(const Point& N) const
@@ -64,8 +77,10 @@ public:
 
 double distance(const Point& a, const Point& b);
 
+#define delimeter "\n------------------------------------\n"
+
 //#define STRUCT_POINT
-#define DISTANCE
+//#define DISTANCE
 //#define CONSTRUCTORS_CHECK
 
 void main()
@@ -115,7 +130,21 @@ void main()
 
 	Point D(A);
 	D.print();
+
+	Point E;
+	E = C;
+	Е.print();
+	A = B;
+	A.print();
 #endif // CONSTRUCTORS_CHECK
+
+	Point A, B, C;
+	cout << delimeter << endl;
+	A = B = C = Point(17, 18);
+	cout << delimeter << endl;
+	A.print();
+	B.print();
+	C.print();
 
 }
 
