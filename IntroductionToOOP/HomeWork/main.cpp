@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 using namespace std;
 
 class Fraction
@@ -53,7 +53,7 @@ bool denominators_equal(const Fraction& left, const Fraction& right)
         return false;
 }
 
-// вычитать и складывать можно только с одинаковым знаменателем
+// РІС‹С‡РёС‚Р°С‚СЊ Рё СЃРєР»Р°РґС‹РІР°С‚СЊ РјРѕР¶РЅРѕ С‚РѕР»СЊРєРѕ СЃ РѕРґРёРЅР°РєРѕРІС‹Рј Р·РЅР°РјРµРЅР°С‚РµР»РµРј
 Fraction operator+(const Fraction& left, const Fraction& right)
 {
     if (denominators_equal(left, right))
