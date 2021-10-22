@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include<string>
 using namespace std;
 
 class Fraction
@@ -54,6 +55,20 @@ public:
         this->denominator++;
         return old;
     }
+    Fraction& operator--()
+    {
+        // нет условий декремента.
+        this->numerator--;
+        this->denominator--;
+        return *this;
+    }
+    Fraction operator--(int)
+    {
+        Fraction old = *this;
+        this->numerator--;
+        this->denominator--;
+        return old;
+    }
     bool operator==(const Fraction& left) // лучше за классом, но для примера - в классе
     {
         return (this->numerator == left.numerator && this->denominator == left.denominator);
@@ -61,13 +76,18 @@ public:
     // methods
     void print() const
     {
-        cout << numerator << " / " << denominator << endl;
+        //cout << numerator << " / " << denominator << endl;
+        cout << view() << endl;
     }
     bool denominator_equal(const Fraction& other) const
     {
         return this->denominator == other.denominator;
     }
-
+    string view() const
+    {
+        string v = to_string(numerator) + " / " + to_string(denominator);
+        return v;
+    }
 };
 
 bool denominators_equal(const Fraction& left, const Fraction& right)
@@ -77,6 +97,23 @@ bool denominators_equal(const Fraction& left, const Fraction& right)
     else
         return false;
 }
+
+bool operator>(const Fraction& left, const Fraction& right)
+{
+    int a = left.get_numerator() * right.get_denominator();
+    int b = right.get_numerator() * left.get_denominator();
+
+    return a > b;
+}
+
+bool operator<(const Fraction& left, const Fraction& right)
+{
+    int a = left.get_numerator() * right.get_denominator();
+    int b = right.get_numerator() * left.get_denominator();
+
+    return a < b;
+}
+
 
 // вычитать и складывать можно только с одинаковым знаменателем
 Fraction operator+(const Fraction& left, const Fraction& right)
@@ -143,6 +180,13 @@ void main()
     Fraction second(3, 4);
     Fraction res1 = first * second;
     res1.print();
+
+    string first_view = first.view();
+    string second_view = second.view();
+
+    string e = (first > second) ? "Yes" : "No";
+    cout << first_view << "  >  " << second_view << "\t" << e << endl;
+
 
     Fraction aa(4, 7);
     Fraction bb(2, 5);
