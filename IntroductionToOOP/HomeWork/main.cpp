@@ -34,14 +34,39 @@ public:
     {
     }
     // operators
-
-
+    Fraction& operator=(const Fraction& other)
+    {
+        this->numerator = other.numerator;
+        this->denominator = other.denominator;
+        return *this;
+    }
+    Fraction& operator++()
+    {
+        // нет условий инкремента.
+        this->numerator++;
+        this->denominator++;
+        return *this;
+    }
+    Fraction operator++(int)
+    {
+        Fraction old = *this;
+        this->numerator++;
+        this->denominator++;
+        return old;
+    }
+    bool operator==(const Fraction& left) // лучше за классом, но для примера - в классе
+    {
+        return (this->numerator == left.numerator && this->denominator == left.denominator);
+    }
     // methods
     void print() const
     {
         cout << numerator << " / " << denominator << endl;
     }
-
+    bool denominator_equal(const Fraction& other) const
+    {
+        return this->denominator == other.denominator;
+    }
 
 };
 
@@ -56,7 +81,8 @@ bool denominators_equal(const Fraction& left, const Fraction& right)
 // вычитать и складывать можно только с одинаковым знаменателем
 Fraction operator+(const Fraction& left, const Fraction& right)
 {
-    if (denominators_equal(left, right))
+    //if (denominators_equal(left, right))
+    if (left.denominator_equal(right))
     {
         Fraction res(left.get_numerator() + right.get_numerator(), left.get_denominator());
         return res;
@@ -124,6 +150,9 @@ void main()
     res2.print();
 
     Fraction A(1);
+    A.print();
+
+    A++;
     A.print();
 #endif 
 }
