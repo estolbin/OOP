@@ -1,4 +1,4 @@
-#include<iostream>
+п»ї#include<iostream>
 using namespace std;
 
 class Fraction;
@@ -7,9 +7,9 @@ Fraction operator+(Fraction left, Fraction right);
 
 class Fraction
 {
-	int integer; // целая часть
-	int numerator; // числитель
-	int denominator; // знаменатель
+	int integer; // С†РµР»Р°СЏ С‡Р°СЃС‚СЊ
+	int numerator; // С‡РёСЃР»РёС‚РµР»СЊ
+	int denominator; // Р·РЅР°РјРµРЅР°С‚РµР»СЊ
 public:
 	int get_integer() const
 	{
@@ -120,7 +120,7 @@ public:
 
 	//			Methods
 	
-	// Выделяет из неправильной дроби целую часть
+	// Р’С‹РґРµР»СЏРµС‚ РёР· РЅРµРїСЂР°РІРёР»СЊРЅРѕР№ РґСЂРѕР±Рё С†РµР»СѓСЋ С‡Р°СЃС‚СЊ
 	Fraction& to_proper()
 	{
 		integer += numerator / denominator;
@@ -128,7 +128,7 @@ public:
 		return *this;
 	}
 
-	// Целую часть интегрирует в числитель
+	// Р¦РµР»СѓСЋ С‡Р°СЃС‚СЊ РёРЅС‚РµРіСЂРёСЂСѓРµС‚ РІ С‡РёСЃР»РёС‚РµР»СЊ
 	Fraction& to_improper()
 	{
 		numerator += integer * denominator;
@@ -136,7 +136,7 @@ public:
 		return *this;
 	}
 
-	// Обращает дробь
+	// РћР±СЂР°С‰Р°РµС‚ РґСЂРѕР±СЊ
 	Fraction& inverse()
 	{
 		to_improper();
