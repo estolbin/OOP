@@ -2,8 +2,11 @@
 using namespace std;
 
 class Fraction;
+
 Fraction operator*(Fraction left, Fraction right);
+Fraction operator/(Fraction left, Fraction right);
 Fraction operator+(Fraction left, Fraction right);
+Fraction operator-(Fraction left, Fraction right);
 
 class Fraction
 {
@@ -99,7 +102,7 @@ public:
 	}
     Fraction& operator/=(const Fraction& other)
     {
-        return *this = *this * other.inverse();
+        return *this = *this / other;
     }
     Fraction& operator-=(const Fraction& other)
     {
@@ -283,11 +286,15 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 	//cout << endl;
 	return os;
 }
-instream& operator>>(instream& is, const Fraction& obj)
+
+istream& operator>>(istream& is, Fraction& obj)
 {
     cout << "Введите дробь - целое, числитель, знаменатель:";
-    is >> obj.integer >> obj.numerator >> obj.denominator;
-    if (obj.denominator == 0) obj.denominator = 1;
+	int integer, numerator, denominator;
+    is >> integer >> numerator >> denominator;
+	obj.set_integer(integer);
+	obj.set_numerator(numerator);
+	obj.set_denominator(denominator);
     return is;
 }
 
@@ -342,4 +349,18 @@ void main()
 	Fraction A(1, 2);
 	A(7, 4, 5);
 	cout << A << endl;
+
+	Fraction B;
+	cin >> B;
+	cout << B << endl;
+
+	B--;
+	cout << B << endl;
+
+	if (A != B) cout << "Dont equal" << endl;
+
+	Fraction C = A;
+	if (A == C) cout << "Equal" << endl;
+
+
 }
