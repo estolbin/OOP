@@ -97,6 +97,14 @@ public:
 	{
 		return *this = *this * other;
 	}
+    Fraction& operator/=(const Fraction& other)
+    {
+        return *this = *this * other.inverse();
+    }
+    Fraction& operator-=(const Fraction& other)
+    {
+        return *this = *this - other;
+    }
 	//		Increment/Decrement
 	Fraction& operator++()
 	{
@@ -109,6 +117,17 @@ public:
 		integer++;
 		return old;
 	}
+    Fraction &operator--()
+    {
+        integer--;
+        return *this;
+    }
+    Fraction operator--(int)
+    {
+        Fraction old = *this;
+        integer--;
+        return old;
+    }
 
 	Fraction& operator()(int integer, int numerator, int denominator)
 	{
@@ -158,7 +177,8 @@ public:
 		if (integer == 0 && numerator == 0) cout << 0;
 		cout << endl;
 	}
-	friend ostream& operator<<(ostream& os, const Fraction& obj);
+    friend ostream& operator<<(ostream& os, const Fraction& obj);
+	friend istream& operator>>(istream& os, const Fraction& obj);
 };
 
 Fraction operator*(Fraction left, Fraction right)
@@ -203,6 +223,52 @@ Fraction operator+(Fraction left, Fraction right)
 		left.get_denominator() * right.get_denominator()
 	).to_proper();
 }
+Fraction operator-(Fraction left, Fraction right)
+{
+    left.to_proper();
+    right.to_proper();
+
+    return Fraction
+    (
+         left.get_integer() - right.get_integer(),
+         left.get_numerator() * right.get_denominator() - right.get_numerator() * left.get_denominator(),
+         left.get_denominator() * right.get_denominator()
+    ).to_proper();
+}
+
+bool operator>(Fraction left, Fraction right)
+{
+    left.to_proper();
+    right.to_proper();
+
+    return (left.get_numerator() * right.get_denominator() > right.get_numerator() * left.get_denominator());
+}
+bool operator<(Fraction left, Fraction right)
+{
+    left.to_proper();
+    right.to_proper(); 
+
+    return (left.get_numerator() * right.get_denominator() < right.get_numerator() * left.get_denominator());
+}
+bool operator!=(Fraction left, Fraction right)
+{
+    return (left > right || left < right);
+}
+bool operator==(Fraction left, Fraction right)
+{
+    if (left != right) return false;
+    return true;
+}
+bool operator>=(Fraction left, Fraction right)
+{
+    if (left > right || left == right) return true;
+    return false;
+}
+bool operator<=(Fraction left, Fraction right)
+{
+    if (left < right || left == right) return true;
+    return false;
+}
 
 ostream& operator<<(ostream& os, const Fraction& obj)
 {
@@ -217,6 +283,14 @@ ostream& operator<<(ostream& os, const Fraction& obj)
 	//cout << endl;
 	return os;
 }
+instream& operator>>(instream& is, const Fraction& obj)
+{
+    cout << "Введите дробь - целое, числитель, знаменатель:";
+    is >> obj.integer >> obj.numerator >> obj.denominator;
+    if (obj.denominator == 0) obj.denominator = 1;
+    return is;
+}
+
 //#define CONSTRUCTORS_CHECK
 //#define ARITHMETICAL_OPERATORS_CHECK
 
