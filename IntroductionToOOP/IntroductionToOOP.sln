@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HomeWork", "HomeWork\HomeWo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Fraction", "Fraction\Fraction.vcxproj", "{5B89D808-F044-43C3-A1FB-BB8E1AD397AD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FromOtherClass", "FromOtherClass", "{9A9A4F82-84BA-4EB3-9493-632313B3F763}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "String", "FromOtherClass\String\String.vcxproj", "{06CBF819-45D1-4FBD-8766-4D61514E89AE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,9 +45,20 @@ Global
 		{5B89D808-F044-43C3-A1FB-BB8E1AD397AD}.Release|x64.Build.0 = Release|x64
 		{5B89D808-F044-43C3-A1FB-BB8E1AD397AD}.Release|x86.ActiveCfg = Release|Win32
 		{5B89D808-F044-43C3-A1FB-BB8E1AD397AD}.Release|x86.Build.0 = Release|Win32
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Debug|x64.ActiveCfg = Debug|x64
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Debug|x64.Build.0 = Debug|x64
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Debug|x86.ActiveCfg = Debug|Win32
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Debug|x86.Build.0 = Debug|Win32
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Release|x64.ActiveCfg = Release|x64
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Release|x64.Build.0 = Release|x64
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Release|x86.ActiveCfg = Release|Win32
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{06CBF819-45D1-4FBD-8766-4D61514E89AE} = {9A9A4F82-84BA-4EB3-9493-632313B3F763}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9806714A-12B3-455D-B17F-799DBE756752}
