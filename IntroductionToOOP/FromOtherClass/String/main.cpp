@@ -25,25 +25,17 @@ public:
 	}
 	char* get_str() { return str; }
 	//			Constructors
-	explicit String(unsigned int size = 80)
+	explicit String(unsigned int size = 80):size(size), str(new char[size]{})
 	{
-		this->size = size;
-		this->str = new char[size] {};
 		cout << "Default constructor:\t" << this << endl;
 	}
-	String(const char str[])
+	String(const char str[]):String(strlen(str)+1) 
 	{
-		this->size = strlen(str) + 1;
-		this->str = new char[size] {};
 		for (int i = 0; str[i]; i++) this->str[i] = str[i];
 		cout << "Constructor: \t\t" << this << endl;
 	}
-	String(const String& other)
+	String(const String& other):String(other.str)
 	{
-		this->size = other.size;
-		// this->str = other.str; !ERROR - Shallow copy
-		this->str = new char[size] {};
-		for (int i = 0; i < size; i++) this->str[i] = other.str[i]; // Deep copy
 		cout << "Copy constructor: \t" << this << endl;
 	}
 	String(String&& other)
@@ -113,7 +105,7 @@ std::ostream& operator<<(std::ostream& os, const String& obj)
 
 //#define CONSTRUCTORS_CHECK
 //#define INPUT_CHECK
-//#define OPERATOR_PLUS_CHECK
+#define OPERATOR_PLUS_CHECK
 
 void main()
 {
